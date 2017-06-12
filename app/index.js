@@ -1,10 +1,12 @@
-import _ from './lodashLoader';
-
 function component () {
   var element = document.createElement('div');
 
-  /* lodash is required for the next line to work */
-  element.innerHTML = _.join(['Hello','webpack'], ' ');
+  import('./lodashLoader').then(function(chunk) {
+    const _ = chunk.default;
+    element.innerHTML = _.join(['Hello','webpack'], ' ');
+  }).catch(function(err) {
+    console.log('Failed to load lodash loader', err);
+  });
 
   return element;
 }
