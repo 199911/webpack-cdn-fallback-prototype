@@ -7,7 +7,8 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    publicPath: 'dist/',
+    // Use an non exist path to test the CDN
+    publicPath: '404/',
     path: path.resolve(__dirname, 'dist')
   }
 };
